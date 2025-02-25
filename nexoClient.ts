@@ -1,12 +1,12 @@
 // nexoClient.ts
 import nexo from "@tiendanube/nexo";
 
-let instance: any = null;
-
-  instance = nexo.create({
-    clientId: "15944",
-    log: true,
-  });
-
-
-export default instance;
+export function getNexo() {
+  if (typeof window !== "undefined") {
+    return nexo.create({
+      clientId: "15944", // Substitua pelo seu Client ID real
+      log: true,
+    });
+  }
+  return null;
+}

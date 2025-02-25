@@ -2,19 +2,25 @@
 
 import { useEffect, useState } from "react";
 import { connect, iAmReady } from "@tiendanube/nexo/helpers";
-import nexo from "../nexoClient"; // Ajuste o path conforme necessário
 import LowStockProducts from "./components/LowStockProducts";
 
 const App: React.FC = () => {
   const [isConnect, setIsConnect] = useState(false);
+  const [nexoInstance, setNexoInstance] = useState<any>(null);
 
   useEffect(() => {
-    // Apenas procede se nexo estiver definido
-    if (!nexo) return;
-    connect(nexo).then(async () => {
-      setIsConnect(true);
-      iAmReady(nexo);
-    });
+    async function init() {
+      // Importa a função getNexo de forma dinâmica para garantir que só seja executada no cliente
+      const { getNexo } = await import("../nexoClient");
+      const instance = getNexo();
+      if (!instance) return;
+      setNexoInstance(instance);
+      connect(instance).then(() => {
+        setIsConnect(true);
+        iAmReady(instance);
+      });
+    }
+    init();
   }, []);
 
   if (!isConnect) return <div>Connecting...</div>;
