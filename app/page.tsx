@@ -1,17 +1,19 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useEffect, useState } from "react";
 import { connect, iAmReady } from "@tiendanube/nexo/helpers";
 import LowStockProducts from "./components/LowStockProducts";
 
+// Defina um tipo para a instância do Nexo. Se não tiver mais detalhes, use unknown.
+type NexoInstance = unknown;
+
 const App: React.FC = () => {
   const [isConnect, setIsConnect] = useState(false);
-  const [nexoInstance, setNexoInstance] = useState<any>(null);
+  const [nexoInstance, setNexoInstance] = useState<NexoInstance | null>(null);
 
   useEffect(() => {
     async function init() {
-      // Importa a função getNexo de forma dinâmica para garantir que só seja executada no cliente
+      // Importa a função getNexo dinamicamente para garantir que seja executada no cliente
       const { getNexo } = await import("../nexoClient");
       const instance = getNexo();
       if (!instance) return;
