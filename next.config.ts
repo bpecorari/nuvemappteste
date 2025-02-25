@@ -8,11 +8,11 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: "frame-ancestors 'self' https://admin.nuvemshop.com.br https://*.nuvemshop.com.br",
+            value: "frame-ancestors 'self' https://admin.nuvemshop.com.br https://*.nuvemshop.com.br;",
           },
           {
             key: "X-Frame-Options",
-            value: "ALLOWALL", // Permitir a incorporação em iframe
+            value: "ALLOW-FROM https://admin.nuvemshop.com.br",
           },
         ],
       },
