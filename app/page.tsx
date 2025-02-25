@@ -9,6 +9,7 @@ type NexoInstance = unknown;
 
 const App: React.FC = () => {
   const [isConnect, setIsConnect] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [nexoInstance, setNexoInstance] = useState<NexoInstance | null>(null);
 
   useEffect(() => {
