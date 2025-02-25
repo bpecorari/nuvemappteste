@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nimbus-ds/components": "^5.5.5",
+    "@nimbus-ds/styles": "^9.11.7",
     "@tiendanube/nexo": "^0.1.8",
     "next": "15.1.7",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
